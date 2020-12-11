@@ -27,6 +27,7 @@ class DetailDepositVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         dateEndLabel.text = currrentDeposit.dateEnd
         profitLabel.text = String(currrentDeposit.profit)
         percentageLabel.text = String(currrentDeposit.percentage)
+        detailDepositTableView.rowHeight = 60
     }
 
     @IBAction func backButton(_ sender: UIButton) {
@@ -38,6 +39,13 @@ class DetailDepositVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "DetailDepositTableViewCell", for: indexPath) as? DetailDepositTableViewCell {
+            let item = depositArray[depositIndex].monthlyPayments[indexPath.row]
+            cell.indexLabel?.text = String(indexPath.row+1)
+            cell.paymentAmountLabel?.text = String(item.paymentAmount)
+            cell.dateOfPaymentLabel?.text = item.dateOfPayment
+            return cell
+        }
         return UITableViewCell()
     }
     

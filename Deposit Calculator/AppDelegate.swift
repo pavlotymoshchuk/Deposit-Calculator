@@ -114,8 +114,36 @@ var depositIndex = 0
 func getMonthlyPayments(sumValue: Double, percentageValue: Double, termStart: Date, termEnd: Date) -> [MonthlyPayment] {
     var monthlyPayments = [MonthlyPayment]()
     let calendar = Calendar.current
-    print(calendar.range(of: .day, in: .year, for: termStart)!.count, calendar.range(of: .day, in: .year, for: termEnd)!.count)
-    
+    var currentDate = termStart
+    while currentDate < termEnd {
+        var paymentAmount: Double
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+        var dateComponent = DateComponents()
+        dateComponent.month = 1
+        var futureDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)!
+        if futureDate > termEnd {
+            futureDate = termEnd
+        }
+        let currentCountDaysInYear = calendar.range(of: .day, in: .year, for: currentDate)!.count
+        let futureCountDaysInYear = calendar.range(of: .day, in: .year, for: currentDate)!.count
+        if currentCountDaysInYear == futureCountDaysInYear {
+            let countDays = Calendar.current.dateComponents([.day], from: currentDate, to: futureDate).day!
+            paymentAmount = Double(countDays)*percentageValue*0.805/Double(currentCountDaysInYear)*sumValue/100
+        } else {
+            let year = Calendar.current.component(.year, from: currentDate)
+            let firstOfNextYear = Calendar.current.date(from: DateComponents(year: year + 1, month: 1, day: 1))!
+            let newYear = Calendar.current.date(byAdding: .day, value: -1, to: firstOfNextYear)!
+            var countDays = Calendar.current.dateComponents([.day], from: currentDate, to: newYear).day!
+            paymentAmount = Double(countDays)*percentageValue*0.805/Double(currentCountDaysInYear)*sumValue/100
+            countDays = Calendar.current.dateComponents([.day], from: newYear, to: futureDate).day!
+            paymentAmount += Double(countDays)*percentageValue*0.805/Double(futureCountDaysInYear)*sumValue/100
+        }
+        print(futureDate)
+        
+        monthlyPayments.append(MonthlyPayment(dateOfPayment: formatter.string(from: futureDate), paymentAmount: round(100*paymentAmount)/100))
+        currentDate = futureDate
+    }
     return monthlyPayments
 }
 
