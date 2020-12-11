@@ -9,13 +9,17 @@
 /* Begin PBXBuildFile section */
 		04FD38CB2583BFA400C4B7A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD38CA2583BFA400C4B7A5 /* AppDelegate.swift */; };
 		04FD38CD2583BFA400C4B7A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD38CC2583BFA400C4B7A5 /* SceneDelegate.swift */; };
-		04FD38CF2583BFA400C4B7A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD38CE2583BFA400C4B7A5 /* ViewController.swift */; };
+		04FD38CF2583BFA400C4B7A5 /* DepositsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD38CE2583BFA400C4B7A5 /* DepositsVC.swift */; };
 		04FD38D22583BFA400C4B7A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FD38D02583BFA400C4B7A5 /* Main.storyboard */; };
 		04FD38D52583BFA400C4B7A5 /* Deposit_Calculator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04FD38D32583BFA400C4B7A5 /* Deposit_Calculator.xcdatamodeld */; };
 		04FD38D72583BFA500C4B7A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FD38D62583BFA500C4B7A5 /* Assets.xcassets */; };
 		04FD38DA2583BFA500C4B7A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FD38D82583BFA500C4B7A5 /* LaunchScreen.storyboard */; };
 		04FD38E52583BFA500C4B7A5 /* Deposit_CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD38E42583BFA500C4B7A5 /* Deposit_CalculatorTests.swift */; };
 		04FD38F02583BFA500C4B7A5 /* Deposit_CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD38EF2583BFA500C4B7A5 /* Deposit_CalculatorUITests.swift */; };
+		04FD390E2583CC6200C4B7A5 /* NewDepositVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD390D2583CC6200C4B7A5 /* NewDepositVC.swift */; };
+		04FD39132583CC7800C4B7A5 /* DetailDepositVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD39122583CC7800C4B7A5 /* DetailDepositVC.swift */; };
+		04FD39182583CCAC00C4B7A5 /* DepositTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD39172583CCAC00C4B7A5 /* DepositTableViewCell.swift */; };
+		04FD39202583CE2200C4B7A5 /* DetailDepositTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD391F2583CE2200C4B7A5 /* DetailDepositTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +43,7 @@
 		04FD38C72583BFA400C4B7A5 /* Deposit Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Deposit Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FD38CA2583BFA400C4B7A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04FD38CC2583BFA400C4B7A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		04FD38CE2583BFA400C4B7A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		04FD38CE2583BFA400C4B7A5 /* DepositsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositsVC.swift; sourceTree = "<group>"; };
 		04FD38D12583BFA400C4B7A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04FD38D42583BFA400C4B7A5 /* Deposit_Calculator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Deposit_Calculator.xcdatamodel; sourceTree = "<group>"; };
 		04FD38D62583BFA500C4B7A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +55,11 @@
 		04FD38EB2583BFA500C4B7A5 /* Deposit CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Deposit CalculatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FD38EF2583BFA500C4B7A5 /* Deposit_CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deposit_CalculatorUITests.swift; sourceTree = "<group>"; };
 		04FD38F12583BFA500C4B7A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04FD39002583BFAE00C4B7A5 /* Deposit Calculator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Deposit Calculator.entitlements"; sourceTree = "<group>"; };
+		04FD390D2583CC6200C4B7A5 /* NewDepositVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDepositVC.swift; sourceTree = "<group>"; };
+		04FD39122583CC7800C4B7A5 /* DetailDepositVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDepositVC.swift; sourceTree = "<group>"; };
+		04FD39172583CCAC00C4B7A5 /* DepositTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositTableViewCell.swift; sourceTree = "<group>"; };
+		04FD391F2583CE2200C4B7A5 /* DetailDepositTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDepositTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,11 +112,16 @@
 			children = (
 				04FD38CA2583BFA400C4B7A5 /* AppDelegate.swift */,
 				04FD38CC2583BFA400C4B7A5 /* SceneDelegate.swift */,
-				04FD38CE2583BFA400C4B7A5 /* ViewController.swift */,
+				04FD38CE2583BFA400C4B7A5 /* DepositsVC.swift */,
+				04FD39172583CCAC00C4B7A5 /* DepositTableViewCell.swift */,
+				04FD390D2583CC6200C4B7A5 /* NewDepositVC.swift */,
+				04FD39122583CC7800C4B7A5 /* DetailDepositVC.swift */,
+				04FD391F2583CE2200C4B7A5 /* DetailDepositTableViewCell.swift */,
 				04FD38D02583BFA400C4B7A5 /* Main.storyboard */,
 				04FD38D62583BFA500C4B7A5 /* Assets.xcassets */,
 				04FD38D82583BFA500C4B7A5 /* LaunchScreen.storyboard */,
 				04FD38DB2583BFA500C4B7A5 /* Info.plist */,
+				04FD39002583BFAE00C4B7A5 /* Deposit Calculator.entitlements */,
 				04FD38D32583BFA400C4B7A5 /* Deposit_Calculator.xcdatamodeld */,
 			);
 			path = "Deposit Calculator";
@@ -261,10 +275,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04FD390E2583CC6200C4B7A5 /* NewDepositVC.swift in Sources */,
 				04FD38D52583BFA400C4B7A5 /* Deposit_Calculator.xcdatamodeld in Sources */,
-				04FD38CF2583BFA400C4B7A5 /* ViewController.swift in Sources */,
+				04FD39202583CE2200C4B7A5 /* DetailDepositTableViewCell.swift in Sources */,
+				04FD39132583CC7800C4B7A5 /* DetailDepositVC.swift in Sources */,
+				04FD38CF2583BFA400C4B7A5 /* DepositsVC.swift in Sources */,
 				04FD38CB2583BFA400C4B7A5 /* AppDelegate.swift in Sources */,
 				04FD38CD2583BFA400C4B7A5 /* SceneDelegate.swift in Sources */,
+				04FD39182583CCAC00C4B7A5 /* DepositTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,15 +458,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Deposit Calculator/Deposit Calculator.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TKCHBW3N32;
 				INFOPLIST_FILE = "Deposit Calculator/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "tymoshch.Deposit-Calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -459,15 +480,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Deposit Calculator/Deposit Calculator.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TKCHBW3N32;
 				INFOPLIST_FILE = "Deposit Calculator/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "tymoshch.Deposit-Calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
