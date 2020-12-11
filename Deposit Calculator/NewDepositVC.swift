@@ -32,10 +32,27 @@ class NewDepositVC: UIViewController, UITextFieldDelegate {
            let termStart = formatter.date(from: termStartTextField.text!),
            let termEnd = formatter.date(from: termEndTextField.text!) {
             if termStart < termEnd {
-                Deposit.saveData(self, data: Deposit(dateStart: termStart, dateEnd: termEnd, sumStart: sumValue, percentage: percentageValue))
+                let newDeposit = Deposit(dateStart: termStart, dateEnd: termEnd, sumStart: sumValue, percentage: percentageValue)
+                Deposit.saveData(self, data: newDeposit)
                 // MARK: - Refreshing the tableView from another ViewController
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
-                dismiss(animated: true, completion: nil)
+                let alert = UIAlertController(title: "Do you want to add reminders?", message: "You will get a reminder the day before you receive the percents", preferredStyle: .alert)
+                    let yesButton = UIAlertAction(title: "Add", style: .default, handler: {(_ action: UIAlertAction) -> Void in
+                        for item in newDeposit.monthlyPayments {
+                            let date = Calendar.current.date(byAdding: .day, value: -1, to: formatter.date(from: item.dateOfPayment)!)!
+                            if date >= Date() {
+                                addReminder(title: "Завтра, \(item.dateOfPayment) нарахування відсотків", notes: "На суму \(round(100*item.paymentAmount)/100) грн", date: date)
+                            }
+                        }
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                    let noButton = UIAlertAction(title: "Not add", style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                    alert.addAction(yesButton)
+                    alert.addAction(noButton)
+                present(alert, animated: true)
+                
             } else {
                 alert(alertTitle: "Term date invalid", alertMessage: "The start time should be before the end", alertActionTitle: "Retry", vc: self)
             }
@@ -49,8 +66,6 @@ class NewDepositVC: UIViewController, UITextFieldDelegate {
     func setupControllers() {
         sumTextField.delegate = self
         percentageTextField.delegate = self
-        //        termStartTextField.delegate = self
-        //        termEndTextField.delegate = self
         termStartTextField.addTarget(self, action: #selector(showDatePickerForStartDate), for: .editingDidBegin)
         termEndTextField.addTarget(self, action: #selector(showDatePickerForEndDate), for: .editingDidBegin)
         let todayDate = Date()

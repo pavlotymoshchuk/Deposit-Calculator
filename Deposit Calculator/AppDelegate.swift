@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 import AVFoundation
 import AudioToolbox
+import EventKit
 
 struct Deposit: Codable {
     let dateStart: String
@@ -139,12 +140,34 @@ func getMonthlyPayments(sumValue: Double, percentageValue: Double, termStart: Da
             countDays = Calendar.current.dateComponents([.day], from: newYear, to: futureDate).day!
             paymentAmount += Double(countDays)*percentageValue*0.805/Double(futureCountDaysInYear)*sumValue/100
         }
-        print(futureDate)
-        
-        monthlyPayments.append(MonthlyPayment(dateOfPayment: formatter.string(from: futureDate), paymentAmount: round(100*paymentAmount)/100))
+        monthlyPayments.append(MonthlyPayment(dateOfPayment: formatter.string(from: Calendar.current.date(byAdding: .day, value: 1, to: futureDate)!), paymentAmount: round(100*paymentAmount)/100))
         currentDate = futureDate
     }
     return monthlyPayments
+}
+
+func addReminder(title: String, notes: String, date: Date) {
+    let eventStore = EKEventStore()
+    eventStore.requestAccess(to: EKEntityType.reminder, completion: {
+        granted, error in
+        if (granted) && (error == nil) {
+            let reminder:EKReminder = EKReminder(eventStore: eventStore)
+            reminder.title = title
+            reminder.priority = 1
+            reminder.notes = notes
+            let dueDate = date.addingTimeInterval(60 * 60 * 20)
+            reminder.dueDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: dueDate)
+            reminder.calendar = eventStore.defaultCalendarForNewReminders()
+            do {
+                try eventStore.save(reminder, commit: true)
+            } catch {
+                print("Cannot save")
+                return
+            }
+            print("Reminder saved")
+        }
+    })
+    
 }
 
 // MARK: - Make ALERT

@@ -8,7 +8,7 @@
 import UIKit
 
 class DepositsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var depositsTableView: UITableView!
     
     override func viewDidLoad() {
@@ -20,6 +20,27 @@ class DepositsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleRefresh), name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
     }
     
+    @IBAction func clearButton(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Remove all data", message: "Are you sure?", preferredStyle: .alert)
+        let yesButton = UIAlertAction(title: "Remove", style: .default, handler: {(_ action: UIAlertAction) -> Void in
+            let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            let path = paths[0].appendingPathComponent("Deposits.txt")
+            let empty = ""
+            do {
+                try empty.write(to: path, atomically: false, encoding: .utf8)
+            } catch {
+            }
+            // MARK: - Refreshing the tableView from another ViewController
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+        })
+        let noButton = UIAlertAction(title: "Dismiss", style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
+            
+        })
+        alert.addAction(yesButton)
+        alert.addAction(noButton)
+        present(alert, animated: true)
+    }
+    
     //MARK: - Refresh
     var refresh = UIRefreshControl()
     
@@ -29,7 +50,7 @@ class DepositsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.depositsTableView.reloadData()
         refresh.endRefreshing()
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return depositArray.count
     }

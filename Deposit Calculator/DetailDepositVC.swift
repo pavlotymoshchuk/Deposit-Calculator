@@ -26,7 +26,7 @@ class DetailDepositVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         dateStartLabel.text = currrentDeposit.dateStart
         dateEndLabel.text = currrentDeposit.dateEnd
         profitLabel.text = String(currrentDeposit.profit)
-        percentageLabel.text = String(currrentDeposit.percentage)
+        percentageLabel.text = String(currrentDeposit.percentage) + "%"
         detailDepositTableView.rowHeight = 60
     }
 
