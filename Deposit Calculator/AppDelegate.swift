@@ -146,14 +146,14 @@ func getMonthlyPayments(sumValue: Double, percentageValue: Double, termStart: Da
     return monthlyPayments
 }
 
-func addReminder(title: String, notes: String, date: Date) {
+func addReminder(title: String, notes: String, date: Date, priority: Int) {
     let eventStore = EKEventStore()
     eventStore.requestAccess(to: EKEntityType.reminder, completion: {
         granted, error in
         if (granted) && (error == nil) {
             let reminder:EKReminder = EKReminder(eventStore: eventStore)
             reminder.title = title
-            reminder.priority = 1
+            reminder.priority = priority
             reminder.notes = notes
             let dueDate = date.addingTimeInterval(60 * 60 * 20)
             reminder.dueDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: dueDate)

@@ -41,8 +41,13 @@ class NewDepositVC: UIViewController, UITextFieldDelegate {
                         for item in newDeposit.monthlyPayments {
                             let date = Calendar.current.date(byAdding: .day, value: -1, to: formatter.date(from: item.dateOfPayment)!)!
                             if date >= Date() {
-                                addReminder(title: "Завтра, \(item.dateOfPayment) нарахування відсотків", notes: "На суму \(round(100*item.paymentAmount)/100) грн", date: date)
+                                addReminder(title: "Завтра, \(item.dateOfPayment), нарахування відсотків", notes: "На суму \(round(100*item.paymentAmount)/100) грн", date: date, priority: 3)
                             }
+                        }
+                        let dateOfPayment = newDeposit.monthlyPayments[newDeposit.monthlyPayments.count-1].dateOfPayment
+                        let dateForReminder = Calendar.current.date(byAdding: .day, value: -1, to: formatter.date(from: dateOfPayment)!)!
+                        if dateForReminder >= Date() {
+                            addReminder(title: "Завтра, \(dateOfPayment), потрібно пітии у банк", notes: "", date: dateForReminder, priority: 1)
                         }
                         self.dismiss(animated: true, completion: nil)
                     })
