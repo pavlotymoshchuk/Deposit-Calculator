@@ -19,9 +19,7 @@ class DepositsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         refresh.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         depositsTableView.addSubview(refresh)
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleRefresh), name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
-        if #available(iOS 13.0, *) {
-            
-        } else {
+        if #available(iOS 13.0, *) { } else {
             plussButton.setTitle("Add", for: .normal)
         }
     }

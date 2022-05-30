@@ -127,7 +127,7 @@ func getMonthlyPayments(sumValue: Double, percentageValue: Double, termStart: Da
             futureDate = termEnd
         }
         let currentCountDaysInYear = calendar.range(of: .day, in: .year, for: currentDate)!.count
-        let futureCountDaysInYear = calendar.range(of: .day, in: .year, for: currentDate)!.count
+        let futureCountDaysInYear = calendar.range(of: .day, in: .year, for: futureDate)!.count
         if currentCountDaysInYear == futureCountDaysInYear {
             let countDays = Calendar.current.dateComponents([.day], from: currentDate, to: futureDate).day!
             paymentAmount = Double(countDays)*percentageValue*0.805/Double(currentCountDaysInYear)*sumValue/100
